@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+  	<link rel="stylesheet" href="http://www.fxczg.com/apps/css/app.css?v4"/>
+  	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<title>客户端APP下载</title>
+</head>
+
+<body class="success">
+	<div class="page-wrap">
+		<div class="info">
+			<div class="ok-btn"><img src="http://www.fxczg.com/apps/img/ok.png" alt="APP下载"></div>
+			<p class="entry-con">感谢您加入福星国际</p>
+		</div>
+		<div class="download">
+			<h3 class="entry-hd">立即下载手机APP下载</h3>
+			<p class="entry-con">体验不同感受</p>
+			<div class="download-btn"><a href="http://www.fxczg.com/Uploads/app/fuxing-01.apk" class="android-btn" id="J_weixin"><img src="http://www.fxczg.com/apps/img/android-btn.png" alt="安卓版下载" id='ad'></a>
+				<div id="ios">
+				<a title="iPhone" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/feifeilongx/huabhh/master/huabhh.plist" style="font-size: 15px;width: 78.7%;margin-bottom: 34px;">
+				<img src="http://www.fxczg.com/apps/img/ios-btn.png" alt="苹果版下载"></a>
+			    </div>
+			</div>
+		</div>
+		<div class="app">
+			<p class="entry-con"><a href="http://www.fxczg.com/guide.html" style='color: red;'><span>“苹果出现未受信任的企业级开发者”解决方法教程</a></span></p>
+		</div>
+		<div class="footer-bg">			
+			<p class="entry-con">注：微信用户请在右上角选择“在浏览器中打开”，再选择下载应用</p>
+		</div>
+		
+	</div>
+	<div id="weixin-tip"><p><img src="http://www.fxczg.com/apps/img/live_weixin.png" alt="微信打开"/><span id="close" title="关闭" class="close">×</span></p></div>
+
+	<script type="text/javascript">
+	var is_weixin = (function() {
+	    var ua = navigator.userAgent.toLowerCase();
+	    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	})();
+
+if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
+  $('#ad').hide();
+  $("#ios").css({"margin-left": "96px"})
+} else if (/(Android)/i.test(navigator.userAgent)) {  //判断Android
+  $('#ios').hide(); 
+  $("#ad").css({"margin-left":"70px"})
+} ;
+	window.onload = function(){
+		var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+		var btn = document.getElementById('J_weixin');
+		var tip = document.getElementById('weixin-tip');
+		var close = document.getElementById('close');
+		if(is_weixin){
+			btn.onclick = function(e){
+				tip.style.height = winHeight + 'px';
+				tip.style.display = 'block';
+				return false;
+			}
+			close.onclick = function(){
+				tip.style.display = 'none';
+			}
+		}
+	}
+	</script>
+</body>
+</html>
